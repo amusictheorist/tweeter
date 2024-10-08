@@ -4,7 +4,7 @@ nav {display: flex;
   height: 120px;
   background-color: #4056A1;
   color: #FFFFFF;
-  padding: 0 1.5em;;
+  padding: 0 1.5em 0 1.5em;
 }
 
 .tweet {
@@ -16,6 +16,6 @@ nav {display: flex;
   margin-left: 0.5em;
 }
 
-nav span {
+nav title {
   font-family: "Bungee", sans-serif;
 }
