@@ -1,4 +1,5 @@
-nav {display: flex;
+nav {
+  display: flex;
   justify-content: space-between;
   align-items: center;
   height: 120px;
@@ -7,8 +8,9 @@ nav {display: flex;
   padding: 0 1.5em 0 1.5em;
 }
 
-.tweet {
+.nav-tweet-btn {
   display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
@@ -16,6 +18,8 @@ nav {display: flex;
   margin-left: 0.5em;
 }
 
-nav title {
+.nav-title {
+  display: flex;
+  flex-direction: column;
   font-family: "Bungee", sans-serif;
 }
