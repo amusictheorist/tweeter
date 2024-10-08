@@ -1,18 +1,17 @@
 $(document).ready(function() {
-  console.log("*** test");
 
   $("#tweet-text").on("input", function() {
     const text = $(this).val();
     const length = text.length;
     const remaining = 140 - length;
-
-    $(".counter").text(remaining);
+    const counter = $(this).siblings().children().eq(1);
+    $(counter).text(remaining);
     if (remaining < 0) {
-      $(".counter").addClass("warning");
+      $(counter).addClass("warning");
       return
     }
 
-    $(".counter").removeClass("warning");
+    $(counter).removeClass("warning");
   })
 
 });
