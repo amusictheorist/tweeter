@@ -30,24 +30,15 @@ label {
   justify-content: space-between;
   align-items: center;
   margin-top: 10px;
+  font-family: "Bungee", sans-serif;
+  font-size: 16px;
 }
 
 button {
   background-color: #4056A1;
   color: #FFFFFF;
-  font-family: "Bungee", sans-serif;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
-  font-size: 16px;
   cursor: pointer;
-}
-
-output {
-  display: flex;
-  justify-content: end;
-  align-self: flex-start;
-  font-size: 16px;
-  color: #545149;
-  font-family: "Bungee", sans-serif;
 }
