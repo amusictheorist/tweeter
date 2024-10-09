@@ -58,7 +58,7 @@ const createTweetElement = function(tweetObj) {
         <header class="tweet-header">
           <div class="author-info">
             <img src=${user.avatars}>
-            <span class="tweet-author">Tweet Author</span>
+            <span class="tweet-author">${user.name}</span>
           </div>
           <div class="author-handle">${user.handle}</div>
         </header>
@@ -76,8 +76,8 @@ const createTweetElement = function(tweetObj) {
 const renderTweets = function(tweetArr) {
   for (const tweetObj of tweetArr) {
     let $tweet = createTweetElement(tweetObj);
-    $('#tweets-container').append($tweet);
+    $('#tweets-container').prepend($tweet);
   }
 };
 
-console.log(renderTweets(data));
+renderTweets(data);
