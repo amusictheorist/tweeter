@@ -1,6 +1,7 @@
 .tweet {
   border: 2px solid black;
   padding: 5px;
+  margin: 20px;
 }
 
 .tweet:hover {
@@ -25,10 +26,10 @@
 }
 
 .author-handle {
-  opacity: 50%;
+  opacity: 0.5;
 }
 
-.tweeet-text {
+.tweet-text {
   font-size: 30px;
 }
 
