@@ -1,0 +1,39 @@
+.tweet {
+  border: 2px solid black;
+  padding: 5px;
+}
+
+.tweet:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.icons i:hover {
+  color: #face;
+}
+
+.tweet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+}
+
+.author-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.author-handle {
+  opacity: 50%;
+}
+
+.tweeet-text {
+  font-size: 30px;
+}
+
+.tweet-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+}
