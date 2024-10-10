@@ -3,6 +3,7 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
 */
+const { hideError, showError, handleTweetSubmission, escape, createTweetElement, renderTweets, loadTweets } = require("./helpers");
 
 $(document).ready(() => {
   $("#submit-tweet").on("submit", handleTweetSubmission);
