@@ -9,33 +9,36 @@ $(document).ready(() => {
   loadTweets();
 });
 
-const isTweetValid = function(tweetContent) {
-  if (tweetContent === "") {
-    return alert("Your tweet is empty!");
-  }
-  if (tweetContent.length > 140) {
-    return alert("Your tweet must be between 1 and 140 characters!");
-  }
-  return true;
-};
-
 const handleTweetSubmission = function(event) {
   event.preventDefault();
+
   const tweetContent = $("#tweet-text").val().trim();
+
+  if (tweetContent === "") {
+    $("#empty-tweet").text("Your tweet is empty!").slideDown();
+  } else {
+    $("#empty-tweet").slideUp();
+  }
   
-  if (isTweetValid(tweetContent)) {
-  const data = $(this).serialize();
-  console.log(data);
-  $.post("/tweets", data)
-  .then(()=> {
-    loadTweets();
-    $("#tweet-text").val("");
-    console.log("Success");
-  })
-  .catch(err => {
-    alert("An error occurred while submitting the tweet. Please try again.");
-  })
-}
+  if (tweetContent.length > 140) {
+    $("#tweet-length").text("Your tweet must be between 1 and 140 characters!").slideDown();
+  } else {
+    $("#tweet-length").slideUp();
+  }
+
+  if (tweetContent && tweetContent.length <= 140) {
+    const data = $(this).serialize();
+    console.log(data);
+    $.post("/tweets", data)
+    .then(() => {
+      loadTweets();
+      $("#tweet-text").val("");
+      console.log("Success");
+    })
+    .catch(err => {
+      alert("An error occurred while submitting the tweet. Please try again.");
+    })
+  }
 };
 
 const escape = function(str) {
