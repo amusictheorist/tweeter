@@ -9,14 +9,22 @@ $(document).ready(() => {
   loadTweets();
 });
 
-const handleTweetSubmission = function(event) {
-  event.preventDefault();
-  
-  const tweetContent = $("#tweet-text").val();
-  if (tweetContent === "" || tweetContent.length > 140) {
+const isTweetValid = function() {
+  const tweetContent = $("#tweet-text").val().trim();
+  if (tweetContent === "") {
+    return alert("Your tweet is empty!");
+  }
+  if (tweetContent.length > 140) {
     return alert("Your tweet must be between 1 and 140 characters!");
   }
+  return true;
+};
+
+const handleTweetSubmission = function(event) {
+  event.preventDefault();
+  const tweetContent = $("#tweet-text").val().trim();
   
+  if (isTweetValid(tweetContent) === true) {
   const data = $(this).serialize();
   console.log(data);
   $.post("/tweets", data)
@@ -28,6 +36,7 @@ const handleTweetSubmission = function(event) {
   .catch(err => {
     console.log(err.message);
   })
+}
 };
 
 const createTweetElement = function(tweetObj) {
