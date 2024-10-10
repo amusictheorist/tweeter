@@ -12,6 +12,11 @@ $(document).ready(() => {
 const handleTweetSubmission = function(event) {
   event.preventDefault();
   
+  const tweetContent = $("#tweet-text").val();
+  if (tweetContent === "" || tweetContent.length > 140) {
+    return alert("Your tweet must be between 1 and 140 characters!");
+  }
+  
   const data = $(this).serialize();
   console.log(data);
   $.post("/tweets", data)
@@ -59,8 +64,6 @@ const renderTweets = function(tweetArr) {
   const timeagoElements = $(".timeago").get();
   if (timeagoElements.length > 0) {
     timeago.render(timeagoElements);
-  } else {
-    console.log("No time elements found");
   }
 };
 
@@ -73,5 +76,3 @@ const loadTweets = () => {
     console.log(err.message);
   })
 };
-
-loadTweets();
