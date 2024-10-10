@@ -9,8 +9,7 @@ $(document).ready(() => {
   loadTweets();
 });
 
-const isTweetValid = function() {
-  const tweetContent = $("#tweet-text").val().trim();
+const isTweetValid = function(tweetContent) {
   if (tweetContent === "") {
     return alert("Your tweet is empty!");
   }
@@ -24,7 +23,7 @@ const handleTweetSubmission = function(event) {
   event.preventDefault();
   const tweetContent = $("#tweet-text").val().trim();
   
-  if (isTweetValid(tweetContent) === true) {
+  if (isTweetValid(tweetContent)) {
   const data = $(this).serialize();
   console.log(data);
   $.post("/tweets", data)
