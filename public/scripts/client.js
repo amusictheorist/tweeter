@@ -3,8 +3,6 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
 */
-const { hideError, showError, handleTweetSubmission, escape, createTweetElement, renderTweets, loadTweets } = require("./helpers");
-
 $(document).ready(() => {
   $("#submit-tweet").on("submit", handleTweetSubmission);
   loadTweets();
@@ -12,21 +10,21 @@ $(document).ready(() => {
 
 const handleTweetSubmission = function(event) {
   event.preventDefault();
-
+  
   const tweetContent = $("#tweet-text").val().trim();
-
+  
   if (tweetContent === "") {
-    $("#empty-tweet").text("Your tweet is empty!").slideDown();
+    showError("#empty-tweet", "Your tweet is empty!");
   } else {
-    $("#empty-tweet").slideUp();
+    hideError("#empty-tweet");
   }
   
   if (tweetContent.length > 140) {
-    $("#tweet-length").text("Your tweet must be between 1 and 140 characters!").slideDown();
+    showError("#tweet-length", "Your tweet must be between 1 and 140 characters!");
   } else {
-    $("#tweet-length").slideUp();
+    hideError("#tweet-length");
   }
-
+  
   if (tweetContent && tweetContent.length <= 140) {
     const data = $(this).serialize();
     console.log(data);
@@ -42,6 +40,14 @@ const handleTweetSubmission = function(event) {
   }
 };
 
+const showError = function(selector, message) {
+  $(selector).text(message).slideDown();
+};
+
+const hideError = function(selector) {
+  $(selector).slideUp();
+};
+
 const escape = function(str) {
   let div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
@@ -54,43 +60,43 @@ const createTweetElement = function(tweetObj) {
   const createdAt = tweetObj.created_at;
   const $tweet = $(`
     <article class="tweet">
-        <header class="tweet-header">
-          <div class="author-info">
-            <img src=${user.avatars}>
-            <span class="tweet-author">${user.name}</span>
-          </div>
-          <div class="author-handle">${user.handle}</div>
-        </header>
-        <p class="tweet-text">${escape(content.text)}</p>
-        <hr/>
-        <footer class="tweet-footer">
-        <time class="timeago" datetime="${new Date(createdAt).toISOString()}"></time>
-          <div class="icons"><i class="fas fa-flag"></i><i class="fas fa-retweet"></i><i class="fas fa-heart"></i></div>
-        </footer>
-      </article>
-      `);
-  return $tweet;
-};
-
-const renderTweets = function(tweetArr) {
-  const container = $(".tweets-container");
-  container.empty();
-  for (const tweetObj of tweetArr) {
-    let $tweet = createTweetElement(tweetObj);
-    container.prepend($tweet);
-  }
-  const timeagoElements = $(".timeago").get();
-  if (timeagoElements.length > 0) {
-    timeago.render(timeagoElements);
-  }
-};
-
-const loadTweets = () => {
-  $.get("/tweets")
-  .then(data => {
-    renderTweets(data)
-  })
-  .catch(err => {
-    alert("An error occurred while loading the tweets. Please refresh the page.");
-  })
-};
+    <header class="tweet-header">
+    <div class="author-info">
+    <img src=${user.avatars}>
+    <span class="tweet-author">${user.name}</span>
+    </div>
+    <div class="author-handle">${user.handle}</div>
+    </header>
+    <p class="tweet-text">${escape(content.text)}</p>
+    <hr/>
+    <footer class="tweet-footer">
+    <time class="timeago" datetime="${new Date(createdAt).toISOString()}"></time>
+    <div class="icons"><i class="fas fa-flag"></i><i class="fas fa-retweet"></i><i class="fas fa-heart"></i></div>
+    </footer>
+    </article>
+    `);
+    return $tweet;
+  };
+  
+  const renderTweets = function(tweetArr) {
+    const container = $(".tweets-container");
+    container.empty();
+    for (const tweetObj of tweetArr) {
+      let $tweet = createTweetElement(tweetObj);
+      container.prepend($tweet);
+    }
+    const timeagoElements = $(".timeago").get();
+    if (timeagoElements.length > 0) {
+      timeago.render(timeagoElements);
+    }
+  };
+  
+  const loadTweets = () => {
+    $.get("/tweets")
+    .then(data => {
+      renderTweets(data)
+    })
+    .catch(err => {
+      alert("An error occurred while loading the tweets. Please refresh the page.");
+    })
+  };

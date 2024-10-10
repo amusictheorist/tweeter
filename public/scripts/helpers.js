@@ -8,38 +8,6 @@ const hideError = function(selector) {
   $(selector).slideUp();
 };
 
-const handleTweetSubmission = function(event) {
-  event.preventDefault();
-  
-  const tweetContent = $("#tweet-text").val().trim();
-  
-  if (tweetContent === "") {
-    showError("#empty-tweet", "Your tweet is empty!");
-  } else {
-    hideError("#empty-tweet");
-  }
-  
-  if (tweetContent.length > 140) {
-    showError("#tweet-length", "Your tweet must be between 1 and 140 characters!");
-  } else {
-    hideError("#tweet-length");
-  }
-  
-  if (tweetContent && tweetContent.length <= 140) {
-    const data = $(this).serialize();
-    console.log(data);
-    $.post("/tweets", data)
-    .then(() => {
-      loadTweets();
-      $("#tweet-text").val("");
-      console.log("Success");
-    })
-    .catch(err => {
-      alert("An error occurred while submitting the tweet. Please try again.");
-    })
-  }
-};
-
 const escape = function(str) {
   let div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
@@ -93,4 +61,4 @@ const createTweetElement = function(tweetObj) {
     })
   };
 
-  module.exports = { showError, hideError, handleTweetSubmission, escape, createTweetElement, renderTweets, loadTweets };
+  module.exports = { showError, hideError, escape, createTweetElement, renderTweets, loadTweets };
