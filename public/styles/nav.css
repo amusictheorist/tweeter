@@ -1,16 +1,17 @@
 nav {
   display: flex;
+  background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-dark.png");
   justify-content: space-between;
   align-items: center;
   position: fixed;
   top: 0;
   height: 120px;
   width: 100%;
-  background-color: #4056A1;
+  background-color: #face;
   color: #FFFFFF;
   padding: 0 1.5em 0 1.5em;
 }
-
+ 
 .nav-tweet-btn {
   display: flex;
   flex-direction: column;
@@ -26,4 +27,11 @@ nav {
   display: flex;
   flex-direction: column;
   font-family: "Bungee", sans-serif;
+}
+
+/* Tablet and desktop styles */
+@media only screen and (min-width:768px) {
+  nav {
+    background-color: #4056A1;
+  }
 }
