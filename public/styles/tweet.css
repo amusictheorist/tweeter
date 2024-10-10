@@ -2,6 +2,7 @@
   border: 2px solid black;
   padding: 5px;
   margin: 20px;
+  width: 100%;
 }
 
 .tweet:hover {
@@ -13,10 +14,13 @@
 }
 
 .tweet-header {
+  background-color: rgba(64, 86, 161, 0.5);
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 20px;
+  padding: 20px;
+  border-radius: 5px;
 }
 
 .author-info {
@@ -30,7 +34,10 @@
 }
 
 .tweet-text {
+  border-radius: 5px;
   font-size: 30px;
+  background-color: rgb(201, 190, 190);
+  padding: 40px;
 }
 
 .tweet-footer {
