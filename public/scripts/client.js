@@ -33,9 +33,15 @@ const handleTweetSubmission = function(event) {
     console.log("Success");
   })
   .catch(err => {
-    console.log(err.message);
+    alert("An error occurred while submitting the tweet. Please try again.");
   })
 }
+};
+
+const escape = function(str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
 };
 
 const createTweetElement = function(tweetObj) {
@@ -51,7 +57,7 @@ const createTweetElement = function(tweetObj) {
           </div>
           <div class="author-handle">${user.handle}</div>
         </header>
-        <p class="tweet-text">${content.text}</p>
+        <p class="tweet-text">${escape(content.text)}</p>
         <hr/>
         <footer class="tweet-footer">
         <time class="timeago" datetime="${new Date(createdAt).toISOString()}"></time>
@@ -81,6 +87,6 @@ const loadTweets = () => {
     renderTweets(data)
   })
   .catch(err => {
-    console.log(err.message);
+    alert("An error occurred while loading the tweets. Please refresh the page.");
   })
 };
