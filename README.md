@@ -22,8 +22,8 @@ This repository is the starter code for the project: Students will fork and clon
 
 ## Screenshots
 
-!["Screenshot of page header in mobile view"] (https://github.com/amusictheorist/tweeter/blob/master/docs/mobile-view-header.png)
+!["Screenshot of page header in mobile view"](https://github.com/amusictheorist/tweeter/blob/master/docs/mobile-view-header.png)
 
-!["Screenshot of attempting to submit and (invalid) empty tweet in desktop view, also displaying previous tweets"] (https://github.com/amusictheorist/tweeter/blob/master/docs/desktop-view-empty-tweet.png)
+!["Screenshot of attempting to submit and (invalid) empty tweet in desktop view, also displaying previous tweets"](https://github.com/amusictheorist/tweeter/blob/master/docs/desktop-view-empty-tweet.png)
 
-!["Screenshot of attempting to submit a tweet that is too long, also displaying a new tweet"] (https://github.com/amusictheorist/tweeter/blob/master/docs/too-long-tweet.png)
+!["Screenshot of attempting to submit a tweet that is too long, also displaying a new tweet"](https://github.com/amusictheorist/tweeter/blob/master/docs/too-long-tweet.png)
